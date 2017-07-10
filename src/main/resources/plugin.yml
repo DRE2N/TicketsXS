@@ -1,0 +1,24 @@
+name: TicketsXS
+main: io.github.dre2n.ticketsxs.TicketsXS
+version: ${project.version}${buildNo}
+author: Daniel Saukel
+description: ${project.description}
+website: ${project.url}
+commands:
+  checkticket:
+    description: Check the status of a ticket.
+  ticket:
+    description: Create a new ticket.
+  tickets:
+    description: List all open tickets.
+  taketicket:
+    description: Teleport to the location of a ticket.
+  replyticket:
+    description: Reply to a ticket.
+  setticket:
+    description: Set the status of a ticket.
+  ticketsxs:
+    description: About TicketsXS
+permissions:
+  txs.mod:
+    description: Permission for moderators.
