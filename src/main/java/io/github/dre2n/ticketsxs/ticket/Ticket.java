@@ -89,6 +89,7 @@ public class Ticket {
 
     public void setStatus(TicketStatus status) {
         this.status = status;
+        save();
     }
 
     public Date getDate() {
@@ -113,12 +114,16 @@ public class Ticket {
 
     public void setAssignedName(String name) {
         assigned = name;
+        save();
     }
 
     public void reply(CommandSender sender, String text) {
-        ChatColor c = ChatColor.RED;
+        ChatColor c = null;
         if (sender instanceof Player && ((Player) sender).getUniqueId().equals(user)) {
             c = ChatColor.DARK_AQUA;
+        } else {
+            c = ChatColor.RED;
+            assigned = sender.getName();
         }
         conversation.add(c + text);
         save();
