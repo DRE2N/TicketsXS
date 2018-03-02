@@ -40,12 +40,12 @@ public class CheckTicketCommand implements CommandExecutor {
             sender.sendMessage(ChatColor.DARK_RED + "/checkticket [ID]");
             return false;
         }
-        if (!sender.hasPermission(TicketsXS.PERMISSION)) {
-            sender.sendMessage(ChatColor.DARK_RED + "You do not have permission to teleport to a ticket location.");
-            return false;
-        }
         int id = Integer.parseInt(args[0]);
         Ticket ticket = TicketsXS.getById(id);
+        if (!sender.hasPermission(TicketsXS.PERMISSION) && !ticket.getPlayerId().equals(((Player) sender).getUniqueId())) {
+            sender.sendMessage(ChatColor.DARK_RED + "You do not have permission to check a ticket status.");
+            return false;
+        }
         if (ticket == null) {
             sender.sendMessage(ChatColor.DARK_RED + "This ticket does not exist.");
             return false;
